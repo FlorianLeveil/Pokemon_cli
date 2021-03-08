@@ -1,0 +1,20 @@
+1|QA|System|Welcome to the Pokemon CLI by Florian Leveil !|New game|Choice a game saved|About
+2|QA|System|What do you want to do ?|Wild herbs|Arena |PokeCenter|Shop|PC|Pokemons|Pokedex|Bag|Save|Me|Exit
+3|QA|Nurse Joelle|Welcome to the Pokecenter. Do wanna heal your Pokemons ?|Yes|No
+4|QA|Saleswoman|Welcome to the Shop. What do you wanna buy ?|Pokeballs|Potions|Exit
+5|QA|PC|Hey you are in your PC ! What do want to do ?|Check my Pokemons|Put Pokemons|Take Pokémons|Exchange Pokémons|Exit
+6|A|Chen|Hello there! Welcome to the magical world of Pokémon! My name is Chen! People often call me the Pokémon Teacher! This world is populated by creatures called Pokémon! For some Pokémon are pets, for others they are a means of fighting. For my part ... Studying Pokémon is my profession. First of all, what's your name ?
+7|A|Chen|OKAY! You have a good name ! This is my grandson. He has been your rival since he was very young. ... Uh ... What's his name again ?
+8|N|Chen|*RIVALS* ! I remember ! Your quest for Pokémon is about to begin ! A whole new world of dreams, adventures and Pokémon awaits ! Crazy !
+9|N|*RIVALS*|Hey you there ! Do not leave ! It's super dangerous ! Wild Pokémon infest the tall grass! You need a Pokémon to protect you ... I found it! Follow me !
+10|N|*RIVALS*|Grandpa ! I'm sick of waiting !
+11|QA|Chen|*RIVALS* ? Uh ... Ah, that's right ! I told you to come ... Here, *PLAYER*! Here are 3 Pokémon ! But ... They're in Poké Balls. When I was younger, I was a hell of a Pokémon trainer! And yes! But with age, I only have 3 left! Choose one !|Charmander|Squirtle|Bulbasaur
+12|N|*RIVALS*|Ben ! Grandpa ! My grandpa ! And me ?
+13|N|Chen|Patience, *RIVALS* ! You will have one later !
+14|N|*RIVALS*| Of what? *PLAYER*, I want this Pokémon!
+15|N|Chen|*RIVALS* ? What are doing ?!
+16|N|*RIVALS*|Grandpa, I want this one!
+17|N|Chen|But ... well but ... well, it's that ... OK. I was going to give you one sooner or later ... *PLAYER*, come over here. *PLAYER*, here's a Pokémon that was captured earlier. He is for you. But ... He's still a little wild.
+18|N|System|*RIVALS* get *POKEMON* !
+19|N|System|Great Congrulation you obtained *POKEMON* !
+20|N|*RIVALS*|Minute, *PLAYER*! Let's see which of our Pokémon is the strongest! Come on and fight, you miserable!
