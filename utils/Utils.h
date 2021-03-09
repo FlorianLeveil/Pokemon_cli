@@ -8,6 +8,7 @@
 #include <vector>
 #include "../menus/Menu.h"
 #include "../trainers/Trainer.h"
+#include "../pcs/Pc.h"
 
 
 class Utils {
@@ -37,6 +38,10 @@ public:
     int printInputUser(int choice);
 
     bool pokeshop(std::string anwser, Trainer *player);
+
+    bool usePc(std::string anwser, Trainer *player, Pc * pc);
+
+    bool usePokemonMenu(std::string anwser, Trainer *player);
 };
 
 

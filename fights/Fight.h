@@ -8,6 +8,7 @@
 
 #include "../trainers/Trainer.h"
 #include "../utils/Utils.h"
+#include "../pcs/Pc.h"
 
 class Fight {
 private:
@@ -17,6 +18,7 @@ private:
     Pokemon * pokemon = nullptr;
     Pokemon * current_pokemon_player = nullptr;
     Pokemon * current_pokemon_opponent = nullptr;
+    Pc * pc = nullptr;
     std::vector<Pokemon *> player_pokemon_live =  {nullptr};
     std::vector<Pokemon *> player_pokemon_dead = {nullptr};
     std::vector<Pokemon *> opponent_pokemon_live =  {nullptr};
@@ -44,10 +46,8 @@ private:
     std::string select_action_pokemon = "3: POKEMONS";
     std::string select_action_run = "4: RUN";
 public:
-    Fight(int id, Trainer *player, Trainer *opponent);
-    Fight(int id, Trainer *player, Pokemon *pokemon);
-
-    Fight(int id, Trainer *player);
+    Fight(int id, Trainer *player, Trainer *opponent, Pc * pc);
+    Fight(int id, Trainer *player, Pc * pc);
 
     void viewFightInterface();
     void startFight();

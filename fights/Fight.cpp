@@ -5,6 +5,7 @@
 #include <iostream>
 #include <random>
 #include "Fight.h"
+#include "../pcs/Pc.h"
 #include <math.h>
 #include <iterator>
 
@@ -20,9 +21,10 @@
 
 
 
-Fight::Fight(int id, Trainer *player, Trainer *opponent) : id(id), player(player), opponent(opponent) {
+Fight::Fight(int id, Trainer *player, Trainer *opponent, Pc*pc) : id(id), player(player), opponent(opponent), pc(pc) {
     Fight::id = id;
     Fight::opponent = opponent;
+    Fight::pc = pc;
     this->setPlayer(player);
 
     this->current_pokemon_opponent = this->opponent->getPokemons().front();
@@ -45,15 +47,9 @@ void Fight::computeLiveDeadPokemon(Trainer *player, std::vector<Pokemon *> *poke
     }
 }
 
-Fight::Fight(int id,Trainer *player, Pokemon *pokemon) : id(id), player(player), pokemon(pokemon) {
+Fight::Fight(int id, Trainer *player, Pc *pc) : id(id), player(player), pc(pc) {
     Fight::id = id;
-    Fight::pokemon = pokemon;
-    this->setPlayer(player);
-    this->current_pokemon_opponent = pokemon;
-}
-
-Fight::Fight(int id, Trainer *player) : id(id), player(player) {
-    Fight::id = id;
+    Fight::pc = pc;
     std::string pokemon_name = "";
     bool is_good = false;
     this->setPlayer(player);
@@ -210,7 +206,7 @@ void Fight::viewFightInterface(){
                 if (pokemon_captured == 1) {
                     std::string white_space_before_text(25, ' ');
                     if (this->player->getPokemons().size() >= 6) {
-                        this->player->getPc()->addPokemon(current_pokemon_opponent);
+                        this->pc->addPokemon(current_pokemon_opponent);
                         std::cout << white_space_before_text << CYN <<"You cannot have more than 6 Pokemons in your team. So "<< YLW << current_pokemon_opponent->getName() << CYN << " was placed in your PC ! " << NC << std::endl;
                         sleep(2);
                     } else {
@@ -246,9 +242,15 @@ void Fight::viewFightInterface(){
         }
         this->computeLiveDeadPokemon(player,&this->player_pokemon_dead, &this->player_pokemon_live, &this->player_pokemon_dead_string , &this->player_pokemon_live_string);
 
+        std::string white_space_before_text(25, ' ');
         if (this->pokemon) {
-            if (this->pokemon->getCurrentHp() == 0 || pokemon_captured) {
 
+            if (this->pokemon->getCurrentHp() == 0) {
+                std::cout << white_space_before_text << CYN <<"You got: "<< YLW << "1000" << CYN << " pokedollars !" << NC << std::endl;
+                player->setPokedollars(player->getPokedollars() + 1000);
+                total_fight = false;
+                break;
+            } else if (pokemon_captured) {
                 total_fight = false;
                 break;
             }
@@ -261,6 +263,8 @@ void Fight::viewFightInterface(){
 
         if (this->opponent_pokemon_live.size() == 0 && this->opponent) {
             total_fight = false;
+            std::cout << white_space_before_text << CYN <<"You got: "<< YLW << "2500" << CYN << " pokedollars !" << NC << std::endl;
+            player->setPokedollars(player->getPokedollars() + 2500);
             break;
         }
 

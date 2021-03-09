@@ -6,6 +6,7 @@
 #define POKEMON_CLI_POKEMON_H
 #include <string>
 #include <vector>
+#include <memory>
 #include "Move.h"
 
 class Pokemon {
@@ -53,6 +54,7 @@ private:
 
 public:
     Pokemon(const std::string &name, int new_lvl);
+
     int getCurrentSpd() const;
 
     void setCurrentSpd(int currentSpd);

@@ -1,8 +1,8 @@
-1|QA|System|Welcome to the Pokemon CLI by Florian Leveil !|New game|Choice a game saved|About
-2|QA|System|What do you want to do ?|Wild herbs|Arena |PokeCenter|Shop|PC|Pokemons|Pokedex|Bag|Save|Me|Exit
+1|QA|System|Welcome to the Pokemon CLI by Florian Leveil !|New game|Choice a game saved NOT IMPLEMENTED|About NOT IMPLEMENTED|Demo
+2|QA|System|What do you want to do ?|Wild herbs|Arena|PokeCenter|Shop|PC|Pokemons|Pokedex NOT IMPLEMENTED|Bag NOT IMPLEMENTED|Save NOT IMPLEMENTED|Me NOT IMPLEMENTED|Exit
 3|QA|Nurse Joelle|Welcome to the Pokecenter. Do wanna heal your Pokemons ?|Yes|No
 4|QA|Saleswoman|Welcome to the Shop. What do you wanna buy ?|Pokeballs|Potions|Exit
-5|QA|PC|Hey you are in your PC ! What do want to do ?|Check my Pokemons|Put Pokemons|Take Pokémons|Exchange Pokémons|Exit
+5|QA|PC|Hey you are in your PC ! What do want to do ?|Check my Pokemons in the PC|Put Pokemons|Take Pokémons|Exit
 6|A|Chen|Hello there! Welcome to the magical world of Pokémon! My name is Chen! People often call me the Pokémon Teacher! This world is populated by creatures called Pokémon! For some Pokémon are pets, for others they are a means of fighting. For my part ... Studying Pokémon is my profession. First of all, what's your name ?
 7|A|Chen|OKAY! You have a good name ! This is my grandson. He has been your rival since he was very young. ... Uh ... What's his name again ?
 8|N|Chen|*RIVALS* ! I remember ! Your quest for Pokémon is about to begin ! A whole new world of dreams, adventures and Pokémon awaits ! Crazy !
@@ -18,3 +18,5 @@
 18|N|System|*RIVALS* get *POKEMON* !
 19|N|System|Great Congrulation you obtained *POKEMON* !
 20|N|*RIVALS*|Minute, *PLAYER*! Let's see which of our Pokémon is the strongest! Come on and fight, you miserable!
+21|QA|System|What do you want to do ?|Check my Pokemons|Change order of my Pokemons NOT IMPLEMENTED|Choice the first pokémon
+22|QA|Arena|Welcome to the Arena ! Choice an opponent:|Your Rivals|Enzo Guilmer EASY|Patrick Balkany MEDIUM|Kim Jong-Un HARD|Exit

@@ -8,7 +8,6 @@
 #include <vector>
 #include "../pokemons/Pokemon.h"
 #include "../bags/Bag.h"
-#include "../pcs/Pc.h"
 
 
 class Trainer {
@@ -26,12 +25,13 @@ private:
     int rivals_id;
     int bag_id;
     Bag* bag;
-    Pc* pc;
 
 public:
     Trainer();
 
     Trainer(int id, bool is_ia, std::string name);
+
+    bool changeOrderPokemons();
 
     int getRivalsId() const;
 
@@ -57,9 +57,6 @@ public:
 
     void setPokemons(const std::vector<Pokemon *> &pokemons);
 
-    Pc *getPc() const;
-
-    void setPc(Pc *pc);
 
     void setPokemon(Pokemon &pokemons);
 
@@ -97,6 +94,12 @@ public:
 
 
     void healAllPokemons();
+
+    void deletePokemon(const Pokemon *pokemon);
+
+    void addPokemon(Pokemon *pokemon);
+
+    void pushFrontPokemon(Pokemon *pokemon);
 };
 
 

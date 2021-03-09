@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "../pokemons/Pokemon.h"
+#include "../trainers/Trainer.h"
 
 class Pc {
 
@@ -28,6 +29,14 @@ public:
     void setPokemons(const std::vector<Pokemon *> &pokemons);
 
     void addPokemon(Pokemon *pokemon);
+
+    bool seePokemons();
+
+    bool putPokemons(Trainer *player);
+
+    bool takePokemons(Trainer *player);
+
+    void deletePokemon(const Pokemon *pokemon);
 };
 
 

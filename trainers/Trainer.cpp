@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Trainer.h"
 #include "../utils/Utils.h"
+#include <bits/stdc++.h>
 
 
 bool Trainer::isIa() const {
@@ -46,6 +47,18 @@ const std::vector<Pokemon *> &Trainer::getPokemons() const {
     return pokemons;
 }
 
+void Trainer::pushFrontPokemon(Pokemon * new_pokemon) {
+    Trainer::pokemons.insert(pokemons.begin(), new_pokemon);
+}
+
+void Trainer::addPokemon(Pokemon *pokemon) {
+    Trainer::pokemons.push_back(pokemon);
+}
+
+void Trainer::deletePokemon(const Pokemon * pokemon) {
+    Trainer::pokemons.erase(std::remove(Trainer::pokemons.begin(), Trainer::pokemons.end(), pokemon), Trainer::pokemons.end());
+}
+
 void Trainer::setPokemons(const std::vector<Pokemon *> &new_pokemons) {
     Trainer::pokemons = new_pokemons;
 }
@@ -69,6 +82,10 @@ const Trainer *Trainer::getRivals() const {
 void Trainer::healAllPokemons(){
     for (auto pokemon : this->getPokemons()) {
         pokemon->setCurrentHp(pokemon->getCurrentHpMax());
+        pokemon->getMove1()->setCurrentPp(pokemon->getMove1()->getPp());
+        pokemon->getMove2()->setCurrentPp(pokemon->getMove2()->getPp());
+        pokemon->getMove3()->setCurrentPp(pokemon->getMove3()->getPp());
+        pokemon->getMove4()->setCurrentPp(pokemon->getMove4()->getPp());
     }
 };
 
@@ -94,7 +111,6 @@ Trainer::Trainer(int id, bool is_ia, std::string name) {
     std::vector<Potion *> potions = {potion, potion, potion};
 
     Bag* bag = new Bag(id, pokeballs, potions);
-    Pc* pc = new Pc(id);
     Trainer::setId(id);
     Trainer::setIsIa(is_ia);
     Trainer::setName(name);
@@ -105,7 +121,6 @@ Trainer::Trainer(int id, bool is_ia, std::string name) {
     Trainer::setPokedollars(5000);
     Trainer::setBagId(id);
     Trainer::setBag(bag);
-    Trainer::setPc(pc);
 
     if (!is_ia) {
         Trainer::setRivalsId(id + 1);
@@ -212,13 +227,6 @@ Trainer::Trainer() {
 
 }
 
-Pc *Trainer::getPc() const {
-    return pc;
-}
-
-void Trainer::setPc(Pc *pc) {
-    Trainer::pc = pc;
-}
 
 
 

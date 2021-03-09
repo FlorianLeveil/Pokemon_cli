@@ -452,16 +452,10 @@ NUMBER,CODE,SERIAL,NAME,TYPE1,TYPE2,COLOR,ABILITY1,ABILITY2,ABILITY HIDDEN,GENER
 381,1,3811,Latios,Dragon,Psychic,Blue,Levitate,,,3,1,0,2,60,80,90,80,130,110,110,600
 381,2,3812,Mega Latios,Dragon,Psychic,Purple,Levitate,,,3,1,1,2.3,70,80,130,100,160,120,110,700
 382,1,3821,Kyogre,Water,,Blue,Drizzle,,,3,1,0,4.5,352,100,100,90,150,140,90,670
-382,2,3822,Primal Kyogre,Water,,Blue,Primordial Sea,,,3,1,1,9.8,430,100,150,90,180,160,90,770
 383,1,3831,Groudon,Ground,,Red,Drought,,,3,1,0,3.5,950,100,150,140,100,90,90,670
-383,2,3832,Primal Groudon,Ground,Fire,Red,Desolate Land,,,3,1,1,5,999.7,100,180,160,150,90,90,770
 384,1,3841,Rayquaza,Dragon,Flying,Green,Air Lock,,,3,1,0,7,206.5,105,150,90,150,90,95,680
-384,2,3842,Mega Rayquaza,Dragon,Flying,Green,Delta Stream,,,3,1,1,10.8,392,105,180,100,180,100,115,780
 385,1,3851,Jirachi,Steel,Psychic,Yellow,Serene Grace,,,3,1,0,0.3,1.1,100,100,100,100,100,100,600
 386,1,3861,Deoxys,Psychic,,Red,Pressure,,,3,1,0,1.7,60.8,50,150,50,150,50,150,600
-386,2,3862,Deoxys,Psychic,,Red,Pressure,,,3,1,0,1.7,60.8,50,180,20,180,20,150,600
-386,3,3863,Deoxys,Psychic,,Red,Pressure,,,3,1,0,1.7,60.8,50,70,160,70,160,90,600
-386,4,3864,Deoxys,Psychic,,Red,Pressure,,,3,1,0,1.7,60.8,50,95,90,95,90,180,600
 387,1,3871,Turtwig,Grass,,Green,Overgrow,,Shell Armor,4,0,0,0.4,10.2,55,68,64,45,55,31,318
 388,1,3881,Grotle,Grass,,Green,Overgrow,,Shell Armor,4,0,0,1.1,97,75,89,85,55,65,36,405
 389,1,3891,Torterra,Grass,Ground,Green,Overgrow,,Shell Armor,4,0,0,2.2,310,95,109,105,75,85,56,525

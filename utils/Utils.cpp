@@ -5,6 +5,7 @@
 #include "Utils.h"
 #include "../trainers/Trainer.h"
 #include "CsvReader.h"
+#include "../pcs/Pc.h"
 #include <iostream>
 #include <cstdlib>
 #include <chrono>
@@ -62,6 +63,8 @@ void Utils::pokecenter(std::string do_heal) {
     }
 }
 
+
+
 int Utils::printInputUser(int choice) {
     bool not_valid = true;
     std::string user_choice = "0";
@@ -91,6 +94,116 @@ int Utils::printInputUser(int choice) {
         }
     }
     return user_choice_int;
+}
+
+bool Utils::usePokemonMenu(std::string anwser, Trainer * player) {
+    system("clear");
+
+    if (anwser == "0") {
+        std::cout << GRN <<"System:" << NC << " this is the list of your pokemons." << std::endl;
+        std::cout << std::endl;
+        int count = 0;
+
+        for (auto pokemon : player->getPokemons()) {
+        count += 1;
+        std::cout << "| Nb: " << count << " | Name: " << pokemon->getName() << " | Lvl: " << pokemon->getLvl() << std::endl;
+        }
+        std::cout << "| Choice 1: BACK |"<< std::endl;
+        this->printInputUser(1);
+        return true;
+    } if (anwser == "1") {
+        while (true) {
+            system("clear");
+            std::cout << GRN <<"System:" << NC << " which of your pokemon do you wanna change the order ?" << std::endl;
+            std::cout << std::endl;
+            int count = 0;
+            for (auto pokemon : player->getPokemons()) {
+                count += 1;
+                std::cout << "| Choice: " << count << " | Order: "<< count << " | Name: " << pokemon->getName() << " | Lvl: " << pokemon->getLvl() << std::endl;
+            }
+            std::cout << "| Choice: "<< count + 1 <<" BACK |"<< std::endl;
+            int user_choice  = this->printInputUser(count + 1);
+            if (user_choice == count +1) {
+                std::cout << GRN <<"System:" << NC << " Bye !" << std::endl;
+                sleep(2);
+                break;
+            }
+            system("clear");
+            std::cout << GRN <<"System:" << NC << " you selected "<< YLW<< player->getPokemons()[user_choice-1]->getName() << NC << ". With wish other pokemon do you wanna change order ?"<< std::endl;
+            std::cout << std::endl;
+            int count2 = 0;
+            for (auto pokemon : player->getPokemons()) {
+                count += 1;
+                std::cout << "| Choice: " << count2 << " | Order: "<< count2 << " | Name: " << pokemon->getName() << " | Lvl: " << pokemon->getLvl() << std::endl;
+            }
+            std::cout << "| Choice: "<< count2 + 1 <<" BACK |"<< std::endl;
+            int user_choice2  = this->printInputUser(count2 + 1);
+            if (user_choice2 == count2 +1) {
+                std::cout << GRN <<"System:" << NC << " Bye !" << std::endl;
+                sleep(2);
+                break;
+            }
+            system("clear");
+            std::cout << GRN <<"System:" << NC << " you selected "<< YLW<< player->getPokemons()[user_choice-1]->getName() << NC << " and "<< YLW << player->getPokemons()[user_choice2-1]->getName() << NC << "." << std::endl;
+            sleep(2);
+            std::cout << GRN <<"System:" << NC << " Nice ! you change order of "<< YLW<< player->getPokemons()[user_choice-1]->getName() << NC << " and "<< YLW << player->getPokemons()[user_choice2-1]->getName() << NC << "." << std::endl;
+            std::cout << GRN <<"System:" << NC << " Bye ! " << std::endl;
+
+            sleep(3);
+
+        }
+    } else {
+        system("clear");
+        std::cout << GRN <<"System:" << NC << " which of your pokemon do you wanna put in the first ?" << std::endl;
+        std::cout << std::endl;
+        int count = 0;
+        for (auto pokemon : player->getPokemons()) {
+            count += 1;
+            std::cout << "| Choice: " << count << " | Order: "<< count << " | Name: " << pokemon->getName() << " | Lvl: " << pokemon->getLvl() << std::endl;
+        }
+        std::cout << "| Choice: "<< count + 1 <<" BACK |"<< std::endl;
+        int user_choice  = this->printInputUser(count + 1);
+        if (user_choice == count +1) {
+            std::cout << GRN <<"System:" << NC << " Bye !" << std::endl;
+            sleep(2);
+            return false;
+        }
+        system("clear");
+        std::cout << GRN <<"System:" << NC << " you selected "<< YLW<< player->getPokemons()[user_choice-1]->getName() << NC << std::endl;
+        Pokemon * newPokemon = new Pokemon(*player->getPokemons()[user_choice-1]);
+        player->pushFrontPokemon(newPokemon);
+        player->deletePokemon(player->getPokemons()[user_choice]);
+        sleep(2);
+        std::cout << GRN <<"System:" << YLW<< player->getPokemons()[0]->getName()<< NC <<" is now the first pokemon in your team." << NC << std::endl;
+        sleep(3);
+        return true;
+    }
+
+}
+
+bool Utils::usePc(std::string anwser, Trainer * player, Pc * pc) {
+    system("clear");
+
+    if (anwser == "0") {
+        return pc->seePokemons();
+    } else if (anwser == "1") {
+        if (player->getPokemons().size() == 1) {
+            std::cout << GRN <<"PC:" << NC << " you cannot have less than 1 Pokemon on you." << std::endl;
+            sleep(2);
+            return false;
+        }
+        return pc->putPokemons(player);
+
+    } else if (anwser == "2") {
+        if (player->getPokemons().size() >= 6) {
+            std::cout << GRN <<"PC:" << NC << " you cannot have more than 6 Pokemons on you." << std::endl;
+            sleep(2);
+            return false;
+        }
+        return pc->takePokemons(player);
+    } else  {
+        return false;
+    }
 }
 
 bool Utils::pokeshop(std::string anwser, Trainer * player) {

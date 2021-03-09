@@ -22,41 +22,60 @@
 
 int main() {
 
-    auto * first_pokemon_player = new Pokemon("Charmander", 1);
-//    auto * first_pokemon_player2 = new Pokemon("Palkia", 4);
-//    auto * first_pokemon_player3 = new Pokemon("Dialga", 2);
-//    auto * first_pokemon_player4 = new Pokemon("Giratina", 6);
-//    auto * first_pokemon_player5 = new Pokemon("Darkrai", 3);
-   auto * first_pokemon_player6 = new Pokemon("Arceus", 7);
-//
-//
-//
-//    auto * first_pokemon_rivals = new Pokemon("Squirtle", 5);
-//
-   Trainer * player = new Trainer(1, false, "Florian");
-   Trainer * rivals = new Trainer(2, true, "Antoine");
-    player->setPokemon(*first_pokemon_player);
-    player->setPokemon(*first_pokemon_player6);
+    auto * enzo = new Trainer(5, true, "Enzo Guilmer");
+    auto * enzo_pokemon_1 = new Pokemon("Pichu", 10);
+    auto * enzo_pokemon_2 = new Pokemon("Spinarak", 11);
+    auto * enzo_pokemon_3 = new Pokemon("Onix", 13);
 
+    enzo->setPokemon(*enzo_pokemon_1);
+    enzo->setPokemon(*enzo_pokemon_2);
+    enzo->setPokemon(*enzo_pokemon_3);
+
+    auto * patrick = new Trainer(6, true, "Patrick Balkany");
+    auto * patrick_pokemon_1 = new Pokemon("Volcarona", 21);
+    auto * patrick_pokemon_2 = new Pokemon("Latios", 22);
+    auto * patrick_pokemon_3 = new Pokemon("Luxio", 24);
+
+    patrick->setPokemon(*patrick_pokemon_1);
+    patrick->setPokemon(*patrick_pokemon_2);
+    patrick->setPokemon(*patrick_pokemon_3);
+
+    auto * kim = new Trainer(7, true, "Kim Jong-Un");
+    auto * kim_pokemon_1 = new Pokemon("Deoxys", 35);
+    auto * kim_pokemon_2 = new Pokemon("Rayquaza", 40);
+    auto * kim_pokemon_3 = new Pokemon("Kyogre", 38);
+    auto * kim_pokemon_4 = new Pokemon("Groudon", 42);
+
+    kim->setPokemon(*kim_pokemon_1);
+    kim->setPokemon(*kim_pokemon_2);
+    kim->setPokemon(*kim_pokemon_3);
+    kim->setPokemon(*kim_pokemon_4);
+
+    Trainer * player = nullptr;
+    Trainer * rivals = nullptr;
+    Pc * pc = nullptr;
 
     Utils * utils = new Utils();
 
     std::string user_choice1 = "0";
     Menu* menu1 = new Menu(1);
     user_choice1 = utils->print_menu_func(menu1);
+
     if (user_choice1 == "0") {
+        pc = new Pc(1);
+
         // Choice name
         std::string user_choice_name = "";
         Menu* menu6 = new Menu(6);
         user_choice_name = utils->print_menu_func(menu6);
-        Trainer* player = new Trainer(1, false, user_choice_name);
+        player = new Trainer(1, false, user_choice_name);
         delete menu6;
 
         // Choice Rivals Name
         std::string user_choice_name_rivals = "";
         Menu* menu7 = new Menu(7);
         user_choice_name_rivals = utils->print_menu_func(menu7);
-        Trainer* rivals = new Trainer(2, true, user_choice_name_rivals);
+        rivals = new Trainer(2, true, user_choice_name_rivals);
         delete menu7;
 
         // Chen Speak
@@ -136,15 +155,40 @@ int main() {
         user_choice1 = utils->print_menu_func(menu20,player,rivals);
         delete menu20;
 
-        auto* fight1 = new Fight(1,player, rivals);
+        Fight * fight1 = new Fight(1,player, rivals, pc);
         fight1->viewFightInterface();
         delete fight1;
 
     } else if (user_choice1 == "1") {
+        return 0;
 
     } else if (user_choice1 == "2") {
+        return 0;
+    } else if (user_choice1 == "3") {
+        auto * first_pokemon_player = new Pokemon("Charmander", 25);
+        auto * first_pokemon_player2 = new Pokemon("Palkia", 30);
+        auto * first_pokemon_player3 = new Pokemon("Dialga", 28);
+        auto * first_pokemon_player4 = new Pokemon("Giratina", 32);
+        auto * first_pokemon_player5 = new Pokemon("Darkrai", 75);
+        auto * first_pokemon_player6 = new Pokemon("Arceus", 99);
 
+        player = new Trainer(1, false, "Florian");
+        rivals = new Trainer(2, true, "Antoine");
+
+        player->setPokemon(*first_pokemon_player);
+        player->setPokemon(*first_pokemon_player6);
+        player->setPokemon(*first_pokemon_player5);
+        player->setPokemon(*first_pokemon_player2);
+
+        rivals->setPokemon(*first_pokemon_player3);
+        rivals->setPokemon(*first_pokemon_player4);
+
+        pc = new Pc(1);
+
+    } else {
+        return 0;
     }
+
     std::string user_choice = "0";
     Menu *mainMenu = new Menu(2);
 
@@ -153,11 +197,32 @@ int main() {
         user_choice = utils->print_menu_func(mainMenu, player, rivals);
 
         if (user_choice == "0") {
-            Fight * fight_wild_herb = new Fight(0, player);
+            Fight * fight_wild_herb = new Fight(0, player, pc);
             fight_wild_herb->viewFightInterface();
             delete fight_wild_herb;
         } else if (user_choice == "1") {
+            Menu *arenaMenu = new Menu(22);
+            std::string user_choice_arenaMenu = utils->print_menu_func(arenaMenu, player);
+            delete arenaMenu;
+            if (user_choice_arenaMenu == "0") {
+                Fight * fight_rivals = new Fight(10, player, rivals, pc);
+                fight_rivals->viewFightInterface();
+                delete fight_rivals;
+            } else if (user_choice_arenaMenu == "1") {
+                Fight * fight_enzo_guilmer = new Fight(10, player, enzo, pc);
+                fight_enzo_guilmer->viewFightInterface();
+                delete fight_enzo_guilmer;
+            } else if (user_choice_arenaMenu == "2") {
+                Fight * fight_patrick_balkani = new Fight(10, player, patrick, pc);
+                fight_patrick_balkani->viewFightInterface();
+                delete fight_patrick_balkani;
+            } else if (user_choice_arenaMenu == "3") {
+                Fight * fight_kim_jong_un = new Fight(10, player, kim, pc);
+                fight_kim_jong_un->viewFightInterface();
+                delete fight_kim_jong_un;
+            } else {
 
+            }
         } else if (user_choice == "2") {
             Menu *pokecenterMenu = new Menu(3);
             std::string user_choice_pokecenter = utils->print_menu_func(pokecenterMenu, player);
@@ -174,9 +239,16 @@ int main() {
             utils->pokeshop(user_choice_pokeshop, player);
 
         } else if (user_choice == "4") {
+            Menu *pcMenu = new Menu(5);
+            std::string user_choice_pc = utils->print_menu_func(pcMenu, player);
+            delete pcMenu;
+            utils->usePc(user_choice_pc, player, pc);
 
         } else if (user_choice == "5") {
-
+            Menu *pokemonMenu = new Menu(21);
+            std::string user_choice_pokemonMenu = utils->print_menu_func(pokemonMenu, player);
+            delete pokemonMenu;
+            utils->usePokemonMenu(user_choice_pokemonMenu, player);
         } else if (user_choice == "6") {
 
         } else if (user_choice == "7") {

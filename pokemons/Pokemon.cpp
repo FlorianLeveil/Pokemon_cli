@@ -375,6 +375,7 @@ void Pokemon::deleteMove(const Move * moves) {
     Pokemon::moves.erase(std::remove(Pokemon::moves.begin(), Pokemon::moves.end(), moves), Pokemon::moves.end());
 }
 
+
 Pokemon::~Pokemon() {
     delete this->move_1;
     delete this->move_2;
